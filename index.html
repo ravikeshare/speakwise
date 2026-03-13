@@ -1,110 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>SpeakWise</title>
 
+<link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
-
-<style>
-body{
-font-family: Arial, sans-serif;
-background:#0f172a;
-color:white;
-margin:0;
-padding:20px;
-}
-
-.card{
-background:#1e293b;
-padding:20px;
-border-radius:10px;
-margin-bottom:15px;
-}
-
-button{
-background:#6366f1;
-border:none;
-padding:10px 15px;
-color:white;
-border-radius:8px;
-cursor:pointer;
-margin-top:10px;
-}
-
-.option{
-display:block;
-background:#334155;
-padding:10px;
-margin:10px 0;
-border-radius:8px;
-cursor:pointer;
-}
-</style>
 
 </head>
 
 <body>
 
+<div class="container">
+
 <h1>SpeakWise</h1>
 
-<div class="card">
-🔥 Streak: <span id="streak">1</span><br>
-⭐ XP: <span id="xp">0</span>
+<div class="stats">
+
+<div>
+🔥 Streak  
+<span id="streak">1</span>
+</div>
+
+<div>
+⭐ XP  
+<span id="xp">0</span>
+</div>
+
 </div>
 
 <div class="card">
 
-<h3>Fix My Sentence</h3>
+<h2>Fix My Sentence</h2>
 
-<p id="question">
-Need update on deployment
-</p>
+<p id="question"></p>
 
-<div class="option" onclick="check(0)">
-Need update deployment
-</div>
-
-<div class="option" onclick="check(1)">
-Need update on deployment
-</div>
-
-<div class="option" onclick="check(2)">
-Could you provide an update on the deployment?
-</div>
+<div id="options"></div>
 
 <p id="result"></p>
 
+<button onclick="nextQuestion()">Next</button>
+
 </div>
 
-<script>
+</div>
 
-let correct = 2
-
-function check(choice){
-
-let result = document.getElementById("result")
-
-if(choice === correct){
-result.innerHTML = "✅ Correct! +10 XP"
-
-let xp = Number(localStorage.getItem("xp") || 0)
-xp += 10
-localStorage.setItem("xp",xp)
-
-document.getElementById("xp").innerText = xp
-}
-else{
-result.innerHTML = "❌ Try again"
-}
-
-}
-
-let xp = Number(localStorage.getItem("xp") || 0)
-document.getElementById("xp").innerText = xp
-
-</script>
+<script src="exercises.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
